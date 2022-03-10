@@ -74,6 +74,7 @@ class DatabaseConnect {
     return List.generate(
       items.length,
       (i) => Todo(
+        id: items[i]['id'],
         title: items[i]['title'],
         createdAt: DateTime.parse(items[i][
             'createdAt']), //sebelumnya format text biasa, perlu diubah ke datetime
