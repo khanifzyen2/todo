@@ -59,4 +59,28 @@ class DatabaseConnect {
       whereArgs: [todo.id],
     );
   }
+
+  //function untuk mengambil semua data dari database
+  Future<List<Todo>> getTodo() async {
+    final db = await database;
+    //query database and simpan todo sebagai List dari map
+    List<Map<String, dynamic>> items = await db.query(
+      'todo',
+      orderBy:
+          'id DESC', //list urut berdasarkan urutan teratas, todo terakhir akan diletakkan diatas
+    );
+
+    //sekarang ubah List dari map menjadi List dari todo
+    return List.generate(
+      items.length,
+      (i) => Todo(
+        title: items[i]['title'],
+        createdAt: DateTime.parse(items[i][
+            'createdAt']), //sebelumnya format text biasa, perlu diubah ke datetime
+        isChecked: items[i]['isChecked'] == 1
+            ? true
+            : false, //sebelumnya format integer, perlu diubah ke boolean
+      ),
+    );
+  }
 }
