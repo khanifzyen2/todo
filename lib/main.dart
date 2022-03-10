@@ -5,7 +5,7 @@ import './screens/homepage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  var db = DatabaseConnect();
+  DatabaseConnect db = DatabaseConnect();
   //insert sample todo
   db.insertTodo(Todo(
     title: 'ini adalah contoh todo',

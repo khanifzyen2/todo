@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/user_input.dart';
+import '../widgets/todo_card.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({Key? key}) : super(key: key);
@@ -18,6 +19,7 @@ class _HomepageState extends State<Homepage> {
       body: Column(
         children: [
           //kita akan membuat widget todo disini untuk Userinput, todocard (representasi visual satu todo, berupa checkbox, title dan createdat), dan todolist (list dari todocard)
+          //Todocard(),
           UserInput(),
         ],
       ),
