@@ -2,22 +2,14 @@ import 'package:flutter/material.dart';
 
 class Todocard extends StatefulWidget {
   //buat variable dimana todocard akan menerima data
-  final int id;
-  final String title;
-  bool isChecked;
-  final DateTime createdAt;
-  final Function insertFunction;
-  final Function deleteFunction;
+  // final int id;
+  // final String title;
+  // bool isChecked;
+  // final DateTime createdAt;
+  // final Function insertFunction;
+  // final Function deleteFunction;
 
-  Todocard(
-      {required this.id,
-      required this.title,
-      required this.isChecked,
-      required this.createdAt,
-      required this.insertFunction, //menghandle perubahan dalam checkbox
-      required this.deleteFunction, //menghandle function dari delete button
-      Key? key})
-      : super(key: key);
+  Todocard({Key? key}) : super(key: key);
 
   @override
   State<Todocard> createState() => _TodocardState();
