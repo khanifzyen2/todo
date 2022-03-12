@@ -3,9 +3,17 @@ import 'package:todo/widgets/todo_card.dart';
 import '../models/db_model.dart';
 
 class Todolist extends StatelessWidget {
+  //membuat Todolist menerima function
+  final Function insertFunction;
+  final Function deleteFunction;
+
   //membuat object dari databaseConnect
   DatabaseConnect db = DatabaseConnect();
-  Todolist({Key? key}) : super(key: key);
+  Todolist({
+    required this.insertFunction,
+    required this.deleteFunction,
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +28,7 @@ class Todolist extends StatelessWidget {
 
           return datalength == 0
               ? const Center(
-                  child: Text("no data found"),
+                  child: Text("tidak ada data"),
                 )
               : ListView.builder(
                   itemCount: datalength,
@@ -29,8 +37,8 @@ class Todolist extends StatelessWidget {
                     title: data[i].title,
                     isChecked: data[i].isChecked,
                     createdAt: data[i].createdAt,
-                    insertFunction: () {},
-                    deleteFunction: () {},
+                    insertFunction: insertFunction,
+                    deleteFunction: deleteFunction,
                   ),
                 );
         },
