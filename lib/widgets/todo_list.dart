@@ -8,10 +8,10 @@ class Todolist extends StatelessWidget {
   final Function deleteFunction;
 
   //membuat object dari databaseConnect
-  DatabaseConnect db = DatabaseConnect();
+  final DatabaseConnect db = DatabaseConnect();
   Todolist({
-    required this.insertFunction,
-    required this.deleteFunction,
+    required this.insertFunction, //tambahkan baris ini
+    required this.deleteFunction, //tambahkan baris ini
     Key? key,
   }) : super(key: key);
 
@@ -37,8 +37,8 @@ class Todolist extends StatelessWidget {
                     title: data[i].title,
                     isChecked: data[i].isChecked,
                     createdAt: data[i].createdAt,
-                    insertFunction: insertFunction,
-                    deleteFunction: deleteFunction,
+                    insertFunction: insertFunction, //ubah baris ini
+                    deleteFunction: deleteFunction, //ubah baris ini
                   ),
                 );
         },

@@ -11,12 +11,16 @@ class UserInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Color(0xaabbccdd),
+      //color: const Color(0xaabbccdd),
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
       child: Row(children: [
         Expanded(
           child: Container(
-            padding: const EdgeInsets.symmetric(horizontal: 5),
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            decoration: BoxDecoration(
+              border: Border.all(color: Colors.black45),
+              borderRadius: BorderRadius.circular(15),
+            ),
             child: TextField(
               controller: textController,
               decoration: const InputDecoration(

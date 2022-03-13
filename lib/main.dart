@@ -1,19 +1,9 @@
 import 'package:flutter/material.dart';
-import './models/db_model.dart';
-import './models/todo_model.dart';
 import './screens/homepage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  DatabaseConnect db = DatabaseConnect();
-  //insert sample todo
-  db.insertTodo(Todo(
-    title: 'ini adalah contoh todo',
-    createdAt: DateTime.now(),
-    isChecked: false,
-  ));
-  print(await db.getTodo());
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {

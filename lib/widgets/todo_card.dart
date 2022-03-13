@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import '../models/todo_model.dart';
+import 'package:intl/intl.dart'; //tambahkan baris ini
 
+// ignore: must_be_immutable
 class Todocard extends StatefulWidget {
   //buat variable dimana todocard akan menerima data
   final int id;
@@ -26,6 +29,13 @@ class Todocard extends StatefulWidget {
 class _TodocardState extends State<Todocard> {
   @override
   Widget build(BuildContext context) {
+    //buat local Todo
+    Todo anotherTodo = Todo(
+      id: widget.id,
+      title: widget.title,
+      createdAt: widget.createdAt,
+      isChecked: widget.isChecked,
+    );
     return Card(
       child: Row(
         children: [
@@ -38,6 +48,10 @@ class _TodocardState extends State<Todocard> {
                 setState(() {
                   widget.isChecked = value!;
                 });
+                //ubah value dari isChecked dari anotherTodo
+                anotherTodo.isChecked = value!;
+                //simpan ke database
+                widget.insertFunction(anotherTodo);
               },
             ),
           ),
@@ -47,16 +61,17 @@ class _TodocardState extends State<Todocard> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  widget.title,
-                  style: TextStyle(
+                  widget.title, //ubah baris ini
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 18,
                   ),
                 ),
                 const SizedBox(height: 5),
                 Text(
-                  widget.createdAt.toString(),
-                  style: TextStyle(
+                  DateFormat("dd MMM yyyy - hh:mm aaa")
+                      .format(widget.createdAt), //ubah baris ini
+                  style: const TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 16,
                     color: Color(0xFF8F8F8F),
@@ -66,8 +81,11 @@ class _TodocardState extends State<Todocard> {
             ),
           ),
           IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.close),
+            onPressed: () {
+              //menambah method delete
+              widget.deleteFunction(anotherTodo);
+            },
+            icon: const Icon(Icons.close),
           ),
         ],
       ),

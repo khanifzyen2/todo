@@ -38,8 +38,8 @@ class _HomepageState extends State<Homepage> {
         children: [
           //kita akan membuat widget todo disini untuk Userinput, todocard (representasi visual satu todo, berupa checkbox, title dan createdat), dan todolist (list dari todocard)
           Todolist(
-            insertFunction: addItem,
-            deleteFunction: deleteItem,
+            insertFunction: addItem, //ta,bahkan baris ini
+            deleteFunction: deleteItem, //tambahkan baris ini
           ),
           UserInput(
             insertFunction: addItem, //tambahkan baris ini
